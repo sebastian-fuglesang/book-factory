@@ -28,5 +28,5 @@ jobs:
         run: npm install ebook-convert
           
       - name: loop and convert
-        run: for f in ./*; do [ebook-convert "$f" "${f.epub}.epub"]; done
+        run: for f in ./*; do ebook-convert "$f" "${f.epub}.epub"; done
 

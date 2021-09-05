@@ -30,7 +30,7 @@ jobs:
         run: npm install -g ebook-convert
         
       - name: install calibre
-        run: sudo apt-get install ebook-convert
+        run: sudo apt-get install calibre
         
       - name: loop and convert
         run: ebook-convert gul.docx gul.epub

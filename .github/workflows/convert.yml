@@ -22,10 +22,12 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
+      - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
       - name: install ebook-convert
-        run: npm install ebook-convert
+        run: npm install -g ebook-convert
           
       - name: loop and convert
         run: ebook-convert gul.docx gul.epub

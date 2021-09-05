@@ -28,7 +28,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: install ebook-convert
         run: npm install -g ebook-convert
-          
+        
+      - name: install calibre
+        run: npm install -g calibre
+        
       - name: loop and convert
         run: ebook-convert gul.docx gul.epub
 

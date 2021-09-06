@@ -33,7 +33,8 @@ jobs:
         run: mkdir epub-books
         
       - name: loop and convert
-        run: for file in ./*; do
+        run: | 
+          for file in ./*; do
             name = basename ${file} .docx
             echo name
             ebook-convert "${name}" epub-books/"${name}".epub 

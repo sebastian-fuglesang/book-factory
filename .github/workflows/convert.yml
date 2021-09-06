@@ -31,4 +31,10 @@ jobs:
         
       - name: loop and convert
         run: ebook-convert gul.docx gul.epub
+        
+      - name: upload epub files
+        uses: actions/upload-artifact@v2
+        with:
+          name: upload file
+          path: output/gul.epub
 

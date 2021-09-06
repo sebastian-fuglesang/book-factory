@@ -28,14 +28,17 @@ jobs:
 
       - name: install calibre
         run: sudo apt-get install calibre
+      
+      - name: install basename
+        run: sudo apt-get install basename
         
       - name: create output folder
         run: mkdir epub-books
         
       - name: loop and convert
         run: for file in ./*; do
-            echo file
-            ebook-convert "${file}" epub-books/"${file%.*}".epub; 
+            name = $ basename ${file} .docx;
+            ebook-convert "${name}" epub-books/"${name}".epub; 
           done
         
       - name: upload epub files

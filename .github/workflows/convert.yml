@@ -29,12 +29,15 @@ jobs:
       - name: install calibre
         run: sudo apt-get install calibre
         
+      - name: create output folder
+        run: mkdir epub-books
+        
       - name: loop and convert
-        run: ebook-convert gul.docx gul.epub
+        run: ebook-convert epub-books/gul.docx gul.epub
         
       - name: upload epub files
         uses: actions/upload-artifact@v2
         with:
           name: upload file
-          path: gul.epub
+          path: epub-books
 

@@ -31,8 +31,11 @@ jobs:
       - name: create output folder
         run: mkdir epub-books
         
-      - name: loop and convert
+      - name: loop and convert to epub
         run: for file in ./*.docx; do ebook-convert "${file##*/}" epub-books/"${file%.*}".epub; done
+        
+      - name: loop and convert to mobi
+        run: for file in ./*.docx; do ebook-convert "${file##*/}" epub-books/"${file%.*}".mobi; done
         
       - name: upload epub files
         uses: actions/upload-artifact@v2

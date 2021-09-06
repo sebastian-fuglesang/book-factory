@@ -33,12 +33,7 @@ jobs:
         run: mkdir epub-books
         
       - name: loop and convert
-        run: | 
-          for file in ./*; do
-            name=$(basename ${file} .docx)
-            echo name
-            ebook-convert "${name}" epub-books/"${name}".epub 
-          done
+        run: for file in ./*; do ebook-convert "$(basename ${file} .docx)" epub-books/"$(basename ${file} .docx)".epub; done
         
       - name: upload epub files
         uses: actions/upload-artifact@v2

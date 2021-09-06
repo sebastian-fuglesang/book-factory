@@ -35,8 +35,8 @@ jobs:
       - name: loop and convert
         run: for file in ./*; 
           do
-            name=$(echo "$filename" | cut -f 1 -d '.')
-            ebook-convert "${name}" "epub-books/${name}.epub"; 
+            name=$(echo "$file" | cut -f 1 -d '.')
+            ebook-convert "${name}.docx" "epub-books/${name}.epub"; 
           done
         
       - name: upload epub files

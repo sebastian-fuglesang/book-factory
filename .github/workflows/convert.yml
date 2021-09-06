@@ -33,7 +33,7 @@ jobs:
         run: mkdir epub-books
         
       - name: loop and convert
-        run: ebook-convert gul.docx epub-books/gul.epub
+        run: for file in ./*; do ebook-convert "$file" "epub-books/${file%.epub}.epub"; done
         
       - name: upload epub files
         uses: actions/upload-artifact@v2

@@ -34,8 +34,8 @@ jobs:
         
       - name: loop and convert
         run: for file in ./*; do
-            name = $ basename ${file} .docx;
-            ebook-convert "${name}" epub-books/"${name}".epub; 
+            name = basename ${file} .docx
+            ebook-convert "${name}" epub-books/"${name}".epub 
           done
         
       - name: upload epub files

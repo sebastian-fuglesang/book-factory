@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: convert doxc to epub
+name: convert doxc to epub and mobi
 
 # Controls when the workflow will run
 on:
@@ -36,10 +36,10 @@ jobs:
           mkdir mobi
         
       - name: loop and convert to epub
-        run: for file in ./*.docx; do ebook-convert "${file##*/}" epub-books/epub/"${file%.*}".epub; done
+        run: for file in ./*.docx; do ebook-convert "${file##*/}" epub-books/epub/"${file%.*}".epub --enable-heuristics --no-default-epub-cover --insert-blank-line --publisher Publizm; done
         
       - name: loop and convert to mobi
-        run: for file in ./*.docx; do ebook-convert "${file##*/}" epub-books/mobi/"${file%.*}".mobi; done
+        run: for file in ./*.docx; do ebook-convert "${file##*/}" epub-books/mobi/"${file%.*}".mobi --enable-heuristics --insert-blank-line --publisher Publizm; done
         
       - name: upload epub files
         uses: actions/upload-artifact@v2

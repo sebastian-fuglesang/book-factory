@@ -36,10 +36,10 @@ jobs:
           mkdir mobi
         
       - name: loop and convert to epub
-        run: for file in ./*.docx; do ebook-convert "${file##*/}" epub-books/epub/"${file%.*}".epub --enable-heuristics --no-default-epub-cover --insert-blank-line --publisher Publizm; done
+        run: for file in ./*.docx; do ebook-convert "${file##*/}" epub-books/epub/"${file%.*}".epub --enable-heuristics --no-default-epub-cover --insert-blank-line --publisher Publizm --chapter "//*[((name()='h1' or name()='h2') and re:test(., 'chapter|book|I|kapittel|section|part\s+', 'i')) or @class = 'chapter']"; done
         
       - name: loop and convert to mobi
-        run: for file in ./*.docx; do ebook-convert "${file##*/}" epub-books/mobi/"${file%.*}".mobi --enable-heuristics --insert-blank-line --publisher Publizm; done
+        run: for file in ./*.docx; do ebook-convert "${file##*/}" epub-books/mobi/"${file%.*}".mobi --enable-heuristics --insert-blank-line --publisher Publizm --chapter "//*[((name()='h1' or name()='h2') and re:test(., 'chapter|book|I|kapittel|section|part\s+', 'i')) or @class = 'chapter']"; done
         
       - name: upload epub files
         uses: actions/upload-artifact@v2
